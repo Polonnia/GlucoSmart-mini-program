@@ -21,7 +21,7 @@ Page({
       this.setData(res.data)
     } catch (err) {
       wx.showToast({
-        title: '»ñÈ¡½¡¿µĞÅÏ¢Ê§°Ü',
+        title: 'è·å–å¥åº·ä¿¡æ¯å¤±è´¥',
         icon: 'none'
       })
     }
@@ -77,13 +77,13 @@ Page({
     try {
       await http.post(API.health.update, this.data)
       wx.showToast({
-        title: '±£´æ³É¹¦',
+        title: 'ä¿å­˜æˆåŠŸ',
         icon: 'success',
         duration: 2000
       })
     } catch (err) {
       wx.showToast({
-        title: '±£´æÊ§°Ü',
+        title: 'ä¿å­˜å¤±è´¥',
         icon: 'none'
       })
     }
@@ -94,7 +94,7 @@ Page({
 
     if (!height || !weight || !age) {
       wx.showToast({
-        title: 'ÇëÌîĞ´»ù±¾ĞÅÏ¢',
+        title: 'è¯·å¡«å†™åŸºæœ¬ä¿¡æ¯',
         icon: 'none'
       })
       return false
@@ -102,7 +102,7 @@ Page({
 
     if (isNaN(height) || height <= 0) {
       wx.showToast({
-        title: 'ÇëÊäÈëÕıÈ·µÄÉí¸ß',
+        title: 'è¯·è¾“å…¥æ­£ç¡®çš„èº«é«˜',
         icon: 'none'
       })
       return false
@@ -110,7 +110,7 @@ Page({
 
     if (isNaN(weight) || weight <= 0) {
       wx.showToast({
-        title: 'ÇëÊäÈëÕıÈ·µÄÌåÖØ',
+        title: 'è¯·è¾“å…¥æ­£ç¡®çš„ä½“é‡',
         icon: 'none'
       })
       return false
@@ -118,7 +118,7 @@ Page({
 
     if (isNaN(age) || age <= 0) {
       wx.showToast({
-        title: 'ÇëÊäÈëÕıÈ·µÄÄêÁä',
+        title: 'è¯·è¾“å…¥æ­£ç¡®çš„å¹´é¾„',
         icon: 'none'
       })
       return false
@@ -126,7 +126,7 @@ Page({
 
     if (fastingBloodSugar && (isNaN(fastingBloodSugar) || fastingBloodSugar <= 0)) {
       wx.showToast({
-        title: 'ÇëÊäÈëÕıÈ·µÄ¿Õ¸¹ÑªÌÇÖµ',
+        title: 'è¯·è¾“å…¥æ­£ç¡®çš„ç©ºè…¹è¡€ç³–å€¼',
         icon: 'none'
       })
       return false
@@ -134,7 +134,7 @@ Page({
 
     if (postprandialBloodSugar && (isNaN(postprandialBloodSugar) || postprandialBloodSugar <= 0)) {
       wx.showToast({
-        title: 'ÇëÊäÈëÕıÈ·µÄ²ÍºóÑªÌÇÖµ',
+        title: 'è¯·è¾“å…¥æ­£ç¡®çš„é¤åè¡€ç³–å€¼',
         icon: 'none'
       })
       return false

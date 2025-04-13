@@ -15,11 +15,11 @@
   <view class="input-area">
     <input 
       class="input" 
-      placeholder="ÇëÊäÈëÄúµÄÎÊÌâ" 
+      placeholder="è¯·è¾“å…¥æ‚¨çš„é—®é¢˜" 
       value="{{inputValue}}"
       bindinput="onInput"
       bindconfirm="sendMessage"
     />
-    <button class="send-btn" bindtap="sendMessage">·¢ËÍ</button>
+    <button class="send-btn" bindtap="sendMessage">å‘é€</button>
   </view>
 </view> 

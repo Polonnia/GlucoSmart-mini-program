@@ -19,7 +19,7 @@ Page({
       })
     } catch (err) {
       wx.showToast({
-        title: '»ñÈ¡ÁÄÌì¼ÇÂ¼Ê§°Ü',
+        title: 'è·å–èŠå¤©è®°å½•å¤±è´¥',
         icon: 'none'
       })
     }
@@ -35,7 +35,7 @@ Page({
     const message = this.data.inputValue.trim()
     if (!message) return
 
-    // Ìí¼ÓÓÃ»§ÏûÏ¢µ½ÁÄÌìÀúÊ·
+    // æ·»åŠ ç”¨æˆ·æ¶ˆæ¯åˆ°èŠå¤©å†å²
     const userMessage = {
       role: 'user',
       content: message
@@ -49,12 +49,12 @@ Page({
     })
 
     try {
-      // ·¢ËÍÏûÏ¢µ½ºó¶Ë
+      // å‘é€æ¶ˆæ¯åˆ°åç«¯
       const res = await http.post(API.chat.send, {
         message: message
       })
 
-      // Ìí¼ÓAI»Ø¸´µ½ÁÄÌìÀúÊ·
+      // æ·»åŠ AIå›å¤åˆ°èŠå¤©å†å²
       const aiMessage = {
         role: 'assistant',
         content: res.data.reply
@@ -67,7 +67,7 @@ Page({
       })
     } catch (err) {
       wx.showToast({
-        title: '·¢ËÍÏûÏ¢Ê§°Ü',
+        title: 'å‘é€æ¶ˆæ¯å¤±è´¥',
         icon: 'none'
       })
     }
