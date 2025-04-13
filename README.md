@@ -17,10 +17,15 @@ mini-program/
 │   └── recipes/          # 食谱页面
 └── images/               # 图片资源目录
 ```
-
 ## 后端接口说明
-具体参照糖小智主项目https://github.com/Polonnia/Diabetes-Recipe-Recommender
-API地址： https://dominant-bunny-feasible.ngrok-free.app，注意要开梯子，而且需要在我的主机上运行后端服务器才能使用
+
+具体参照糖小智主项目 [Diabetes-Recipe-Recommender](https://github.com/Polonnia/Diabetes-Recipe-Recommender)
+
+API地址：`https://dominant-bunny-feasible.ngrok-free.app`
+
+> ?? 注意事项：
+> - 需要开启代理
+> - 需要在本机运行后端服务器
 
 ### 1. 健康信息接口
 - 获取健康信息
