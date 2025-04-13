@@ -17,6 +17,7 @@ mini-program/
 │   └── recipes/          # 食谱页面
 └── images/               # 图片资源目录
 ```
+
 ## 后端接口说明
 
 具体参照糖小智主项目 [Diabetes-Recipe-Recommender](https://github.com/Polonnia/Diabetes-Recipe-Recommender)
@@ -92,23 +93,6 @@ API地址：`https://dominant-bunny-feasible.ngrok-free.app`
   ```
 
 ### 3. 食谱接口
-- 获取食谱列表
-  ```
-  GET /api/recipes/list
-  返回数据：
-  [{
-    name: string,           // 食谱名称
-    mealType: string,       // 餐次类型
-    health_score: number,   // 健康评分
-    energy: number,         // 能量(kcal)
-    PBG: number,           // 预测餐后血糖
-    carb: number,          // 碳水化合物(g)
-    protein: number,       // 蛋白质(g)
-    fat: number,           // 脂肪(g)
-    fiber: number          // 膳食纤维(g)
-  }]
-  ```
-
 - 评分食谱
   ```
   POST /update-pref

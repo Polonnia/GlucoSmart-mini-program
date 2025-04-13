@@ -5,8 +5,6 @@ Page({
     searchValue: '',
     mealTypes: ['全部', '早餐', '午餐', '晚餐', '加餐'],
     mealTypeIndex: 0,
-    difficulties: ['全部', '简单', '中等', '复杂'],
-    difficultyIndex: 0,
     recipes: [],
     recipeHistory: []
   },
@@ -17,7 +15,8 @@ Page({
     this.setData({
       recipeHistory: history
     })
-    this.loadRecipes()
+    // 初始化时加载空列表
+    this.setData({ recipes: [] })
   },
 
   onSearchInput: function(e) {
@@ -26,35 +25,17 @@ Page({
     })
   },
 
-  searchRecipes: async function() {
-    try {
-      const res = await http.get(API.recipes.search, {
-        keyword: this.data.searchValue,
-        mealType: this.data.mealTypeIndex > 0 ? this.data.mealTypes[this.data.mealTypeIndex] : '',
-        difficulty: this.data.difficultyIndex > 0 ? this.data.difficulties[this.data.difficultyIndex] : ''
-      })
+  searchRecipes: function() {
+    // 由于后端没有搜索接口，这里只做本地过滤
+    const filteredRecipes = this.data.recipes.filter(recipe => {
+      const matchesKeyword = !this.data.searchValue || 
+        recipe.name.toLowerCase().includes(this.data.searchValue.toLowerCase())
+      const matchesMealType = this.data.mealTypeIndex === 0 || 
+        recipe.mealType === this.data.mealTypes[this.data.mealTypeIndex]
+      return matchesKeyword && matchesMealType
+    })
 
-      // 处理返回的食谱数据
-      const recipes = res.data.map(recipe => ({
-        ...recipe,
-        stats: {
-          healthScore: recipe.health_score,
-          energy: recipe.energy,
-          predictedGlucose: recipe.PBG,
-          carb: recipe.carb,
-          protein: recipe.protein,
-          fat: recipe.fat,
-          fiber: recipe.fiber
-        }
-      }))
-
-      this.setData({ recipes })
-    } catch (err) {
-      wx.showToast({
-        title: '搜索失败',
-        icon: 'none'
-      })
-    }
+    this.setData({ recipes: filteredRecipes })
   },
 
   onMealTypeChange: function(e) {
@@ -62,40 +43,6 @@ Page({
       mealTypeIndex: e.detail.value
     })
     this.searchRecipes()
-  },
-
-  onDifficultyChange: function(e) {
-    this.setData({
-      difficultyIndex: e.detail.value
-    })
-    this.searchRecipes()
-  },
-
-  loadRecipes: async function() {
-    try {
-      const res = await http.get(API.recipes.list)
-      
-      // 处理返回的食谱数据
-      const recipes = res.data.map(recipe => ({
-        ...recipe,
-        stats: {
-          healthScore: recipe.health_score,
-          energy: recipe.energy,
-          predictedGlucose: recipe.PBG,
-          carb: recipe.carb,
-          protein: recipe.protein,
-          fat: recipe.fat,
-          fiber: recipe.fiber
-        }
-      }))
-
-      this.setData({ recipes })
-    } catch (err) {
-      wx.showToast({
-        title: '获取食谱列表失败',
-        icon: 'none'
-      })
-    }
   },
 
   viewRecipeDetail: function(e) {
@@ -109,7 +56,7 @@ Page({
   rateRecipe: async function(e) {
     const { recipeId, rating } = e.currentTarget.dataset
     try {
-      await http.post(API.recipes.rate, {
+      await http.post('/update-pref', {
         recipe: recipeId,
         rating: rating * 2 // 将5星制转换为10分制
       })
