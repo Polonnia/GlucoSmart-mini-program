@@ -23,7 +23,7 @@ mini-program/
 
 API地址：`https://dominant-bunny-feasible.ngrok-free.app`
 
-> ?? 注意事项：
+> 注意事项：
 > - 需要开启代理
 > - 需要在本机运行后端服务器
 
