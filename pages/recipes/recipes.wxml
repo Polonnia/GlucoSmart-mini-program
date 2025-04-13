@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="search-bar">
+    <input 
+      class="search-input" 
+      placeholder="ËÑË÷Ê³Æ×" 
+      value="{{searchValue}}"
+      bindinput="onSearchInput"
+      bindconfirm="searchRecipes"
+    />
+    <button class="search-btn" bindtap="searchRecipes">ËÑË÷</button>
+  </view>
+
+  <view class="filter-bar">
+    <picker bindchange="onMealTypeChange" value="{{mealTypeIndex}}" range="{{mealTypes}}">
+      <view class="filter-item">
+        <text>{{mealTypes[mealTypeIndex]}}</text>
+        <text class="icon">¨‹</text>
+      </view>
+    </picker>
+    <picker bindchange="onDifficultyChange" value="{{difficultyIndex}}" range="{{difficulties}}">
+      <view class="filter-item">
+        <text>{{difficulties[difficultyIndex]}}</text>
+        <text class="icon">¨‹</text>
+      </view>
+    </picker>
+  </view>
+
+  <scroll-view class="recipe-list" scroll-y="true">
+    <view class="recipe-item" wx:for="{{recipes}}" wx:key="id" bindtap="viewRecipeDetail" data-id="{{item.id}}">
+      <image class="recipe-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="recipe-info">
+        <view class="recipe-title">{{item.title}}</view>
+        <view class="recipe-meta">
+          <text class="meal-type">{{item.mealType}}</text>
+          <text class="difficulty">{{item.difficulty}}</text>
+          <text class="calories">{{item.calories}}Ç§¿¨</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view> 

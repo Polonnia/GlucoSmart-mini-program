@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="card">
+    <view class="title">基本信息</view>
+    <view class="form-item">
+      <text>身高(cm)</text>
+      <input type="digit" placeholder="请输入身高" bindinput="onHeightInput" value="{{height}}" />
+    </view>
+    <view class="form-item">
+      <text>体重(kg)</text>
+      <input type="digit" placeholder="请输入体重" bindinput="onWeightInput" value="{{weight}}" />
+    </view>
+    <view class="form-item">
+      <text>年龄</text>
+      <input type="number" placeholder="请输入年龄" bindinput="onAgeInput" value="{{age}}" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">血糖信息</view>
+    <view class="form-item">
+      <text>空腹血糖(mmol/L)</text>
+      <input type="digit" placeholder="请输入空腹血糖" bindinput="onFastingInput" value="{{fastingBloodSugar}}" />
+    </view>
+    <view class="form-item">
+      <text>餐后血糖(mmol/L)</text>
+      <input type="digit" placeholder="请输入餐后血糖" bindinput="onPostprandialInput" value="{{postprandialBloodSugar}}" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">其他信息</view>
+    <view class="form-item">
+      <text>是否有并发症</text>
+      <radio-group bindchange="onComplicationChange">
+        <radio value="1" checked="{{complication}}">是</radio>
+        <radio value="0" checked="{{!complication}}">否</radio>
+      </radio-group>
+    </view>
+    <view class="form-item">
+      <text>是否使用胰岛素</text>
+      <radio-group bindchange="onInsulinChange">
+        <radio value="1" checked="{{insulin}}">是</radio>
+        <radio value="0" checked="{{!insulin}}">否</radio>
+      </radio-group>
+    </view>
+  </view>
+
+  <button class="btn-primary" bindtap="saveHealthInfo">保存信息</button>
+</view> 

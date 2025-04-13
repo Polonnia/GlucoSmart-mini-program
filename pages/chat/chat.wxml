@@ -1,0 +1,25 @@
+<view class="container">
+  <scroll-view class="chat-list" scroll-y="true" scroll-into-view="{{scrollToView}}">
+    <block wx:for="{{chatHistory}}" wx:key="index">
+      <view class="chat-item {{item.role === 'user' ? 'user' : 'assistant'}}" id="msg-{{index}}">
+        <view class="avatar">
+          <image src="{{item.role === 'user' ? '/images/user-avatar.png' : '/images/assistant-avatar.png'}}" />
+        </view>
+        <view class="content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="input-area">
+    <input 
+      class="input" 
+      placeholder="请输入您的问题" 
+      value="{{inputValue}}"
+      bindinput="onInput"
+      bindconfirm="sendMessage"
+    />
+    <button class="send-btn" bindtap="sendMessage">发送</button>
+  </view>
+</view> 

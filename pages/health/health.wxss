@@ -1,0 +1,39 @@
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item text {
+  display: block;
+  margin-bottom: 10rpx;
+  color: #666;
+}
+
+.form-item input {
+  width: 100%;
+  height: 80rpx;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+radio-group {
+  display: flex;
+  gap: 40rpx;
+}
+
+radio {
+  transform: scale(0.8);
+}
+
+.btn-primary {
+  margin-top: 40rpx;
+  width: 100%;
+} 
